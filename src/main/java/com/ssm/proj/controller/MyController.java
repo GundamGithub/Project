@@ -48,8 +48,9 @@ public class MyController {
     }
 
 
+    //查找到单挑留言 就进行操作
     @RequestMapping(value = "OneMsg",produces ="application/json" )
-    public Message OnMsg (@RequestParam("mid") int mid ){
+    public Message OneMsg (@RequestParam("mid") int mid ){
         Message byMid = messageService.findByMid(mid);
         return byMid;
     }
