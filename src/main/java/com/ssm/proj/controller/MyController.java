@@ -6,9 +6,11 @@ import com.ssm.proj.service.MessageService;
 import com.ssm.proj.service.UserService;
 import com.ssm.proj.service.impl.MessageServiceImpl;
 import org.apache.ibatis.annotations.Arg;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
 public class MyController {
@@ -20,6 +22,12 @@ public class MyController {
     UserService userService;
 
 
+    //查询所有留言
+    @RequestMapping(value = "allmsg",produces = "application/json")
+    public List<Message> AllMsg(@RequestParam("page") int page){
+        List<Message> allMsg = messageService.findAllMsg(page);
+        return allMsg;
+    }
 
 
     @PostMapping(value = "NewMsg",produces = "application/json" )
@@ -45,7 +53,7 @@ public class MyController {
     }
 
 
-
+    //查询个人所有留言
 
 
 

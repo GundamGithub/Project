@@ -17,6 +17,7 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     public List<Message> findAllMsg(int page) {
+        page=(page-1)*10;
         List<Message> messages = messageMapper.SelectAll(page);
         return messages;
     }

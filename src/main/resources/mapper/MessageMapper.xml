@@ -14,10 +14,10 @@
         <result column="isdel" jdbcType="INTEGER" property="isdel" />
     </resultMap>
 
-    <resultMap id="ListMsgResultMap" type="com.ssm.proj.entity.message.MessageDto">
-        <collection property="messages" resultMap="MessageResultMap">
-        </collection>
-    </resultMap>
+
+
+
+
 
 
 
@@ -36,9 +36,11 @@
     <update id="UpdateStatus">
         update message set status=1 where mid =#{mid};
     </update>
-    <select id="SelectAll" resultMap="ListMsgResultMap">
+
+
+    <select id="SelectAll" resultMap="MessageResultMap">
         select u.id,u.username,phone,email,content,data,type,status from user u left join message m on u.id=m.id where isdel=0
-        limit(#{page}-1)*10,10;
+        limit #{page},10;
     </select>
 
 
