@@ -19,5 +19,10 @@
 
     </insert>
 
+<!--    根据mid将留言设为已读  1为已读-->
+    <update id="UpdateStatus">
+        update message set status=1 where mid =#{mid};
+    </update>
+
 
 </mapper>

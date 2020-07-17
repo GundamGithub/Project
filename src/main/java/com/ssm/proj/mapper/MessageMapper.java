@@ -8,7 +8,7 @@ public interface MessageMapper {
     //用户添加留言
     int insert(@Param("message") Message message);
 
-//    //将留言设为已阅
-//    int UpdateStatus(int)
+    //将留言设为已阅
+    int UpdateStatus(@Param("mid") int mid);
 
 }

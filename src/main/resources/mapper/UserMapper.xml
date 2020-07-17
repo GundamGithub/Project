@@ -10,7 +10,6 @@
 
     </resultMap>
     <select id="SelectById" resultMap="UserResultMap">
-
         select * from user where id =#{id};
     </select>
 

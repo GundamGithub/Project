@@ -20,7 +20,7 @@ public class MyController {
     UserService userService;
 
 
-    @PostMapping(value = "DDD",produces = "application/json" )
+    @PostMapping(value = "NewMsg",produces = "application/json" )
     //插入新留言
     public String NewMessage(@RequestParam(value = "id") int id, @RequestBody Message message){
         User byId = userService.findById(id);
@@ -35,7 +35,13 @@ public class MyController {
     }
 
 
+    //将留言设为已读
+    @RequestMapping("/SetHaveRead")
+    public String SetHaveRead(@RequestParam(value = "mid") int mid){
+        int i = messageService.SetHaveRead(mid);
+        return i>0?"success":"failure";
 
+    }
 
 
 

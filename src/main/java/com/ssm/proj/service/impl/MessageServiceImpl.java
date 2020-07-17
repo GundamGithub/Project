@@ -21,6 +21,11 @@ public class MessageServiceImpl implements MessageService {
         return insert;
     }
 
+    @Override
+    public int SetHaveRead(int mid) {
+        int i = messageMapper.UpdateStatus(mid);
+        return i;
+    }
 
 
 }

@@ -8,6 +8,7 @@ public interface MessageService {
     public int insert(Message message);
 
 
+    public int SetHaveRead(int mid);
 
 
 
