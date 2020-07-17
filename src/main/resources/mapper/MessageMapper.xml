@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssm.proj.mapper.MessageMapper">
+    <resultMap id="MessageResultMap" type="com.ssm.proj.entity.message.Message">
+        <!--@mbg.generated-->
+        <!--@Table message-->
+        <result column="mid" jdbcType="INTEGER" property="mid"/>
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="username" jdbcType="VARCHAR" property="username" />
+        <result column="content" jdbcType="LONGVARCHAR" property="content" />
+        <result column="data" jdbcType="TIMESTAMP" property="data" />
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="status" jdbcType="INTEGER" property="status" />
+        <result column="isdel" jdbcType="INTEGER" property="isdel" />
+    </resultMap>
+
+    <insert id="insert" >
+        insert into message(id,username,content,type) values (#{message.id},#{message.username},#{message.content},#{message.type});
+
+    </insert>
+
+
+</mapper>

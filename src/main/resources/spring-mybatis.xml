@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--
+        1.mybatis核心配置
+        2.注册所有的Mapper.xml
+        3.数据库连接池的配置
+        4.可选配置  指定的mapper.xml文件的类的前缀
+    -->
+
+
+
+    <!--    mapper接口的注册
+         MapperScannerConfigurer
+         1.指定mapper接口文件所在包
+         2.将sqlSessionFactory进行关联
+
+
+    -->
+
+    <!--    加载db.properties-->
+    <context:property-placeholder location="classpath:db.properties"/>
+
+
+
+
+
+
+    <!--    我们把Spring+SpringMVC+MyBatis 整合注入进来-->
+    <!--     注册SqlSession工厂   核心配置-->
+    <bean id="factoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--     配置加载mybatis配置文件   -->
+        <property name="configLocation" value="classpath:config/mybatis-config.xml"/>
+
+        <!--     配置连接池   -->
+        <property name="dataSource" ref="dataSource"/>
+
+        <!--        将所有的Mapper.xml文件注册-->
+        <property name="mapperLocations" value="classpath:mapper/**/*.xml"/>
+
+        <!--        可选配置  指定的mapper.xml文件的类的前缀-->
+        <property name="typeAliasesPackage" value="com.ssm.proj.entity"/>
+    </bean>
+
+
+    <!--    这个会扫描所有的mapper接口-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.ssm.proj.mapper"/>
+        <!--                                                       对应核心配置-->
+        <property name="sqlSessionFactoryBeanName" value="factoryBean"/>
+
+    </bean>
+
+    <!--    注册连接池-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <!--        <property name="url" value="jdbc:mysql://localhost:3306/resql?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false" />-->
+        <property name="url" value="${jdbc_url}" />
+        <property name="username" value="${jdbc_username}" />
+        <property name="password" value="${jdbc_password}" />
+
+
+
+        <property name="filters" value="stat" />
+
+        <property name="maxActive" value="20" />
+        <property name="initialSize" value="1" />
+        <property name="maxWait" value="60000" />
+        <property name="minIdle" value="1" />
+
+        <property name="timeBetweenEvictionRunsMillis" value="60000" />
+        <property name="minEvictableIdleTimeMillis" value="300000" />
+
+        <property name="testWhileIdle" value="true" />
+        <property name="testOnBorrow" value="false" />
+        <property name="testOnReturn" value="false" />
+
+        <property name="poolPreparedStatements" value="true" />
+        <property name="maxOpenPreparedStatements" value="20" />
+
+        <property name="asyncInit" value="true" />
+    </bean>
+
+
+</beans>

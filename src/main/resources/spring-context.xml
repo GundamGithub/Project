@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+<!--    配置spring-context-->
+<!--    开启扫描覆盖-->
+    <context:component-scan base-package="com.ssm.proj">
+
+<!--        可选配置-->
+        <!--        <context:exclude-filter type="" expression=""/>   扫描时排除某些xxxx -->
+        <!--        <context:include-filter type="" expression=""/>   扫描时只扫描xxx-->
+
+
+    </context:component-scan>
+
+    <!--proxy-target-class="true" 默认使用的是jdk代理(false)   设置为true 表示使用CGLIB动态代理技术织入增强。    -->
+    <!--    <aop:aspectj-autoproxy proxy-target-class="true"/>-->
+
+</beans>
