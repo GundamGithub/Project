@@ -23,7 +23,7 @@ public class MyController {
 
 
     //查询所有留言
-    @RequestMapping(value = "allmsg",produces = "application/json")
+    @RequestMapping(value = "allMsg",produces = "application/json")
     public List<Message> AllMsg(@RequestParam("page") int page){
         List<Message> allMsg = messageService.findAllMsg(page);
         return allMsg;
@@ -32,11 +32,19 @@ public class MyController {
 
 
     //查询个人所有留言
-    @RequestMapping(value = "personmsg",produces ="application/json" )
+    @RequestMapping(value = "personMsg",produces ="application/json" )
     public List<Message> PersonMsg(@RequestParam("id") int id){
         List<Message> byId = messageService.findById(id);
         return byId;
 
+    }
+
+
+    //根据留言内容模糊查询
+    @RequestMapping(value = "contentLike",produces ="application/json")
+    public List<Message> ContentLike(@RequestParam("content") String content){
+        List<Message> byContent = messageService.findByContent(content);
+        return byContent;
     }
 
 

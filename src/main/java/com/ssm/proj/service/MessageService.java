@@ -14,12 +14,12 @@ public interface MessageService {
     public int insert(Message message);
 
 
-
-
     public int SetHaveRead(int mid);
 
 
     public int DeleteMsg(int mid);
+
+    public List<Message> findByContent(String content);
 
 
 }

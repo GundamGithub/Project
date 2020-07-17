@@ -58,6 +58,11 @@
         and isdel=0 order by m.date desc;
     </select>
 
+<!--   根据留言内容模糊查询-->
+    <select id="selectByContentLike" resultMap="MessageResultMap">
+        select u.id,u.username,phone,email,content,date,type,status from user u left join message m on u.id=m.id where
+    content like CONCAT ('%',#{content},'%');
+    </select>
 
 
 </mapper>

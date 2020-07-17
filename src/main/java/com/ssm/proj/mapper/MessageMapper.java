@@ -29,4 +29,11 @@ public interface MessageMapper {
 //    List<Message> selectMsgByMsgOrDate(@Param("Msg")String msg, Data data);
 
 
+    //根据留言内容模糊查询
+    List<Message> selectByContentLike(@Param("content") String content);
+
+
+
+
+
 }

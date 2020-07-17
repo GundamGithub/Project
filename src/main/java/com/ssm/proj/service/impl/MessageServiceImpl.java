@@ -22,6 +22,7 @@ public class MessageServiceImpl implements MessageService {
         return messages;
     }
 
+    //根据某个用户的所有留言
     @Override
     public List<Message> findById(int id) {
         List<Message> messages = messageMapper.selectMsgById(id);
@@ -48,6 +49,12 @@ public class MessageServiceImpl implements MessageService {
     public int DeleteMsg(int mid) {
         int i = messageMapper.DeleteMsgById(mid);
         return i;
+    }
+
+    @Override
+    public List<Message> findByContent(String content) {
+        List<Message> messages = messageMapper.selectByContentLike(content);
+        return messages;
     }
 
 
