@@ -4,6 +4,7 @@ import com.ssm.proj.entity.message.Message;
 import com.ssm.proj.entity.user.User;
 import org.apache.ibatis.annotations.Param;
 
+import javax.xml.crypto.Data;
 import java.util.List;
 
 public interface MessageMapper {
@@ -16,6 +17,16 @@ public interface MessageMapper {
     //将留言设为已阅
     int UpdateStatus(@Param("mid") int mid);
 
+
+    //删除留言
+    int DeleteMsgById(@Param("mid") int mid);
+
+
+    //查询个人所有留言
+    List<Message> selectMsgById(@Param("id") int id);
+
+    //动态sql  根据两个条件动态查询留言信息
+//    List<Message> selectMsgByMsgOrDate(@Param("Msg")String msg, Data data);
 
 
 }

@@ -8,7 +8,7 @@
         <result column="id" jdbcType="INTEGER" property="id" />
         <result column="username" jdbcType="VARCHAR" property="username" />
         <result column="content" jdbcType="LONGVARCHAR" property="content" />
-        <result column="data" jdbcType="TIMESTAMP" property="data" />
+        <result column="date" jdbcType="TIMESTAMP" property="date" />
         <result column="type" jdbcType="VARCHAR" property="type"/>
         <result column="status" jdbcType="INTEGER" property="status" />
         <result column="isdel" jdbcType="INTEGER" property="isdel" />
@@ -38,10 +38,26 @@
     </update>
 
 
+    <update id="DeleteMsgById">
+        update message set isdel=1 where mid=#{mid};
+    </update>
+
+
+
+
+<!--    多表查询所有留言-->
     <select id="SelectAll" resultMap="MessageResultMap">
-        select u.id,u.username,phone,email,content,data,type,status from user u left join message m on u.id=m.id where isdel=0
-        limit #{page},10;
+        select u.id,u.username,phone,email,content,date,type,status from user u left join message m on u.id=m.id where isdel=0
+        order by m.date desc limit #{page},10 ;
     </select>
+
+
+<!--    多表查询个人所有留言-->
+    <select id="selectMsgById" resultMap="MessageResultMap">
+        select u.id,u.username,phone,email,content,date,type,status from user u left join message m on u.id=m.id where u.id=${id}
+        and isdel=0 order by m.date desc;
+    </select>
+
 
 
 </mapper>

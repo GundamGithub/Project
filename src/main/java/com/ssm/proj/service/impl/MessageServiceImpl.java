@@ -14,7 +14,7 @@ public class MessageServiceImpl implements MessageService {
     @Resource
     MessageMapper messageMapper;
 
-
+    //查询所有留言
     @Override
     public List<Message> findAllMsg(int page) {
         page=(page-1)*10;
@@ -23,19 +23,32 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
+    public List<Message> findById(int id) {
+        List<Message> messages = messageMapper.selectMsgById(id);
+        return messages;
+    }
+
+
+    //增加新留言
+    @Override
     public int insert(Message message) {
 
         int insert = messageMapper.insert(message);
         return insert;
     }
 
+    //把留言设为已读
     @Override
     public int SetHaveRead(int mid) {
         int i = messageMapper.UpdateStatus(mid);
         return i;
     }
 
-
+    @Override
+    public int DeleteMsg(int mid) {
+        int i = messageMapper.DeleteMsgById(mid);
+        return i;
+    }
 
 
 }

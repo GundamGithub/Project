@@ -11,7 +11,7 @@ public class Message {
 
     private String content;
 
-    private Date data;
+    private Date date;
 
 
     private Integer status;

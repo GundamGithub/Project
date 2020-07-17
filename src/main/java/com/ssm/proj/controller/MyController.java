@@ -30,6 +30,17 @@ public class MyController {
     }
 
 
+
+    //查询个人所有留言
+    @RequestMapping(value = "personmsg",produces ="application/json" )
+    public List<Message> PersonMsg(@RequestParam("id") int id){
+        List<Message> byId = messageService.findById(id);
+        return byId;
+
+    }
+
+
+
     @PostMapping(value = "NewMsg",produces = "application/json" )
     //插入新留言
     public String NewMessage(@RequestParam(value = "id") int id, @RequestBody Message message){
@@ -53,8 +64,11 @@ public class MyController {
     }
 
 
-    //查询个人所有留言
-
-
+    //将留言删除
+    @RequestMapping("/delete")
+    public String DeleteMsg(@RequestParam(value = "mid") int mid){
+        int i = messageService.DeleteMsg(mid);
+        return i>0?"delete success":"failure";
+    }
 
 }
