@@ -61,7 +61,15 @@
 <!--   根据留言内容模糊查询-->
     <select id="selectByContentLike" resultMap="MessageResultMap">
         select u.id,u.username,phone,email,content,date,type,status from user u left join message m on u.id=m.id where
-    content like CONCAT ('%',#{content},'%');
+    content like CONCAT ('%',#{content},'%') and isdel=0;
+    </select>
+
+
+<!--    查询单条留言-->
+    <select id="selectByMid" resultMap="MessageResultMap">
+        select u.id,u.username,phone,email,content,date,type,status from user u left join message m on u.id=m.id
+        where mid=#{mid} and isdel=0;
+
     </select>
 
 

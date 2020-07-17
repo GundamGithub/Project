@@ -57,5 +57,11 @@ public class MessageServiceImpl implements MessageService {
         return messages;
     }
 
+    @Override
+    public Message findByMid(int mid) {
+        Message message = messageMapper.selectByMid(mid);
+        return message;
+    }
+
 
 }

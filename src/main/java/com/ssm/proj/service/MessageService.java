@@ -21,5 +21,7 @@ public interface MessageService {
 
     public List<Message> findByContent(String content);
 
+    public Message findByMid(int mid);
+
 
 }

@@ -48,9 +48,16 @@ public class MyController {
     }
 
 
+    @RequestMapping(value = "OneMsg",produces ="application/json" )
+    public Message OnMsg (@RequestParam("mid") int mid ){
+        Message byMid = messageService.findByMid(mid);
+        return byMid;
+    }
 
-    @PostMapping(value = "NewMsg",produces = "application/json" )
+
+
     //插入新留言
+    @PostMapping(value = "NewMsg",produces = "application/json" )
     public String NewMessage(@RequestParam(value = "id") int id, @RequestBody Message message){
         User byId = userService.findById(id);
         message.setId(byId.getId());

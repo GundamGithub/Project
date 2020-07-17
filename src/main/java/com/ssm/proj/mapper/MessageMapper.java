@@ -5,6 +5,7 @@ import com.ssm.proj.entity.user.User;
 import org.apache.ibatis.annotations.Param;
 
 import javax.xml.crypto.Data;
+import java.util.Date;
 import java.util.List;
 
 public interface MessageMapper {
@@ -26,11 +27,14 @@ public interface MessageMapper {
     List<Message> selectMsgById(@Param("id") int id);
 
     //动态sql  根据两个条件动态查询留言信息
-//    List<Message> selectMsgByMsgOrDate(@Param("Msg")String msg, Data data);
+//    List<Message> selectMsgByMsgOrDate(@Param("Msg")String content, @Param("Date") Date date);
 
 
     //根据留言内容模糊查询
     List<Message> selectByContentLike(@Param("content") String content);
+
+    //查询单挑留言
+    Message selectByMid(@Param("mid") int mid);
 
 
 
