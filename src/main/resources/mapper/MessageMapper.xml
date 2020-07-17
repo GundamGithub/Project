@@ -37,7 +37,7 @@
         update message set status=1 where mid =#{mid};
     </update>
 
-
+<!-- 假删除留言-->
     <update id="DeleteMsgById">
         update message set isdel=1 where mid=#{mid};
     </update>
