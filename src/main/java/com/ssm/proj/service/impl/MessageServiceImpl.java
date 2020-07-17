@@ -7,12 +7,19 @@ import com.ssm.proj.service.MessageService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class MessageServiceImpl implements MessageService {
     @Resource
     MessageMapper messageMapper;
 
+
+    @Override
+    public List<Message> findAllMsg(int page) {
+        List<Message> messages = messageMapper.SelectAll(page);
+        return messages;
+    }
 
     @Override
     public int insert(Message message) {
@@ -26,6 +33,8 @@ public class MessageServiceImpl implements MessageService {
         int i = messageMapper.UpdateStatus(mid);
         return i;
     }
+
+
 
 
 }

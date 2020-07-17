@@ -20,6 +20,8 @@ public class MyController {
     UserService userService;
 
 
+
+
     @PostMapping(value = "NewMsg",produces = "application/json" )
     //插入新留言
     public String NewMessage(@RequestParam(value = "id") int id, @RequestBody Message message){
@@ -30,7 +32,6 @@ public class MyController {
         System.out.println(message);
         int insert = messageService.insert(message);
         return insert>0?"Success":"The network is busy ";
-
 
     }
 

@@ -3,7 +3,10 @@ package com.ssm.proj.service;
 import com.ssm.proj.entity.message.Message;
 import com.ssm.proj.entity.user.User;
 
+import java.util.List;
+
 public interface MessageService {
+    public List<Message> findAllMsg(int page);
 
     public int insert(Message message);
 
