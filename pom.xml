@@ -21,7 +21,7 @@
     <maven.compiler.target>1.8</maven.compiler.target>
 <!--    统一spring版本 groupId-->
 <!--    设置通用变量-->
-    <spring.version>5.2.7.RELEASE</spring.version>
+    <spring.version>6.0.0</spring.version>
     <spring.groupId>org.springframework</spring.groupId>
   </properties>
 
